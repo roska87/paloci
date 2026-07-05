@@ -1,0 +1,40 @@
+/* Brain view — the 3D neural graph overlay, its HUD (density switch, hint,
+   match counter), the lobe legend, tooltips and loading states. */
+
+.viewtabs .vtab{min-width:52px;}
+/* In brain mode the topbar must float ABOVE the 3D overlay so you can get back;
+   hide the atrium content and let clicks pass through the shell to the graph. */
+body.in-brain #view, body.in-brain .foothint, body.in-brain .minimap{display:none;}
+body.in-brain .shell{pointer-events:none;}
+body.in-brain .topbar{pointer-events:auto;}
+
+#brain{position:fixed;inset:0;z-index:6;background:radial-gradient(120% 90% at 50% 42%, rgba(16,17,34,0.42) 0%, rgba(7,8,18,0.9) 78%);}
+#brain::before{content:"";position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(46% 38% at 27% 22%, rgba(242,195,104,0.075), transparent 70%),
+  radial-gradient(52% 44% at 75% 74%, rgba(127,215,239,0.06), transparent 70%),
+  radial-gradient(30% 26% at 64% 16%, rgba(217,174,242,0.05), transparent 70%);}
+#brain::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:7;box-shadow:inset 0 0 220px 42px rgba(0,0,6,0.62);}
+#brainGraph{position:absolute;inset:0;}
+#brainGraph canvas{display:block;}
+#brain .scene-tooltip{font-family:var(--sans) !important;font-size:12px !important;color:var(--ink) !important;
+  background:color-mix(in srgb,var(--panel) 92%,transparent);border:1px solid var(--line-2);border-radius:6px;
+  padding:6px 11px !important;backdrop-filter:blur(6px);box-shadow:0 10px 28px -14px #000;letter-spacing:.02em;}
+#brain .scene-tooltip b{font-family:var(--serif);font-size:13px;color:var(--gold-br);letter-spacing:.03em;}
+
+.brain-hud{position:absolute;left:0;right:0;top:64px;z-index:8;display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:none;}
+.brain-hud .lmode-wrap{pointer-events:auto;background:color-mix(in srgb,var(--panel) 82%,transparent);border:1px solid var(--line);backdrop-filter:blur(8px);}
+.brain-hint{pointer-events:none;font-size:12px;color:var(--ink-faint);letter-spacing:.04em;font-family:var(--serif);font-style:italic;background:color-mix(in srgb,#070812 60%,transparent);padding:4px 12px;border-radius:999px;}
+.brain-match{pointer-events:none;font-size:12px;font-family:var(--mono);color:var(--gold-br);background:color-mix(in srgb,#070812 68%,transparent);border:1px solid var(--line-2);padding:4px 13px;border-radius:999px;letter-spacing:.03em;box-shadow:0 0 16px -4px var(--gold-dp);}
+.brain-match[hidden]{display:none;}
+
+.brain-legend{position:absolute;left:20px;bottom:20px;z-index:8;max-width:200px;max-height:44vh;overflow:auto;padding:12px 14px;border-radius:8px;background:color-mix(in srgb,var(--panel) 84%,transparent);border:1px solid var(--line);backdrop-filter:blur(8px);display:flex;flex-direction:column;gap:6px;}
+.brain-legend .lg-title{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:3px;}
+.brain-legend button{display:flex;align-items:center;gap:8px;background:none;border:0;color:var(--ink-dim);font:inherit;font-size:12px;cursor:pointer;padding:2px 0;text-align:left;width:100%;transition:color .2s;}
+.brain-legend button:hover{color:var(--ink);}
+.brain-legend .lg-dot{width:10px;height:10px;border-radius:50%;flex:none;box-shadow:0 0 8px -1px currentColor;}
+
+.brain-loading,.brain-fail{position:absolute;inset:0;z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--ink-dim);font-family:var(--serif);font-style:italic;font-size:1.1rem;text-align:center;padding:24px;background:color-mix(in srgb,#070812 55%,transparent);}
+.brain-loading[hidden],.brain-fail[hidden]{display:none;}
+.brain-fail{color:var(--ink-faint);}
+
+@media (max-width:640px){.brain-legend{display:none;}.viewtabs .vtab{min-width:auto;}}

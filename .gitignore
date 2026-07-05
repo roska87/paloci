@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# OMC session state (local tooling, not part of the project)
+.omc/
+
+# Node (future-proofing; the project has no npm deps today)
+node_modules/
+
+# Logs & env
+*.log
+.env

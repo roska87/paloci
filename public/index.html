@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Paloci — El Palacio de la Memoria</title>
+<link rel="stylesheet" href="/css/tokens.css" />
+<link rel="stylesheet" href="/css/base.css" />
+<link rel="stylesheet" href="/css/atrium.css" />
+<link rel="stylesheet" href="/css/brain.css" />
+<link rel="stylesheet" href="/css/overlays.css" />
+</head>
+<body>
+<div id="ambient"></div>
+<canvas id="motes"></canvas>
+
+<div class="shell">
+  <div class="topbar">
+    <a class="brand" id="brand" href="#" title="Paloci" aria-label="Paloci">
+      <span class="brand-seal" aria-hidden="true">P</span>
+      <span class="brand-name">Paloci</span>
+    </a>
+    <nav class="crumbs" id="crumbs" aria-label="Location"></nav>
+    <div class="lmode-wrap viewtabs" role="group" aria-label="View">
+      <button class="lmode vtab on" data-view="atrium">Atrio</button>
+      <button class="lmode vtab" data-view="brain">Cerebro</button>
+    </div>
+    <div class="lantern" title="Search">
+      <span class="flame"></span>
+      <input id="lantern" type="search" placeholder="" autocomplete="off" aria-label="Search" />
+      <div class="lmode-wrap" role="group" aria-label="Search mode">
+        <button class="lmode on" data-mode="text">Palabra</button>
+        <button class="lmode" data-mode="semantic">Significado</button>
+      </div>
+    </div>
+    <div class="lmode-wrap" id="langWrap" role="group" aria-label="Language">
+      <button class="lmode" data-lang="es" title="Español">ES</button>
+      <button class="lmode" data-lang="en" title="English">EN</button>
+    </div>
+    <button class="themebtn" id="themebtn" title="Theme" aria-label="Theme">☾</button>
+  </div>
+  <div id="view"><div class="loading"><div class="spinner"></div><span id="bootMsg"></span></div></div>
+  <div class="foothint" id="foothint"></div>
+</div>
+
+<aside class="minimap" id="minimap" aria-label="Floor plan" hidden>
+  <div class="mm-title"><span id="mmTitle">Plan</span><button id="mmToggle" title="Toggle">▾</button></div>
+  <div class="mm-grid" id="mmGrid"></div>
+</aside>
+
+<div id="brain" hidden>
+  <div id="brainGraph"></div>
+  <div class="brain-hud">
+    <div class="lmode-wrap" role="group" aria-label="Density">
+      <button class="lmode bmode on" data-bmode="lod">Detalle</button>
+      <button class="lmode bmode" data-bmode="full">Completo</button>
+    </div>
+    <div class="brain-hint" id="brainHint"></div>
+    <div class="brain-match" id="brainMatch" hidden></div>
+  </div>
+  <div class="brain-legend" id="brainLegend"></div>
+  <div class="brain-loading" id="brainLoading" hidden><div class="spinner"></div><span id="brainLoadMsg"></span></div>
+  <div class="brain-fail" id="brainFail" hidden></div>
+</div>
+
+<div class="hive-scrim" id="hive" role="dialog" aria-modal="true" aria-label="Hive" hidden>
+  <div class="hive-panel">
+    <div class="hive-top">
+      <button class="hive-back" id="hiveBack" aria-label="Back" hidden>←</button>
+      <div class="hive-head">
+        <div class="hive-tag" id="hiveTag"></div>
+        <h3 id="hiveTitle"></h3>
+        <div class="hive-meta" id="hiveMeta"></div>
+      </div>
+      <button class="reader-close" id="hiveClose" aria-label="Close">✕</button>
+    </div>
+    <div class="hive-body" id="hiveBody"></div>
+  </div>
+</div>
+
+<div class="scrim" id="scrim" role="dialog" aria-modal="true" aria-label="Memory">
+  <div class="reader">
+    <div class="reader-top">
+      <div class="rt-body">
+        <div class="rt-tag" id="rdTag"></div>
+        <h3 id="rdTitle"></h3>
+        <div class="rt-meta" id="rdMeta"></div>
+      </div>
+      <button class="reader-close" id="rdClose" aria-label="Close">✕</button>
+    </div>
+    <div class="reader-doc" id="rdDoc"></div>
+  </div>
+</div>
+
+<!-- The 3D library is a classic (UMD) script; it exposes the ForceGraph3D global. -->
+<script src="/vendor/3d-force-graph.min.js"></script>
+<script type="module" src="/js/main.js"></script>
+</body>
+</html>

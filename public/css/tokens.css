@@ -1,0 +1,28 @@
+/* Design tokens — the palace's palette, type and layout constants.
+   Dark is the default; light comes from the OS preference, and the
+   data-theme attribute (set by the toggle) must win in both directions. */
+
+:root {
+  --ground:#0b0d16; --ground-2:#0f1120; --panel:#171a2a; --panel-2:#1e2236; --raised:#232842;
+  --line:rgba(216,171,90,0.16); --line-2:rgba(216,171,90,0.30);
+  --ink:#ece7d6; --ink-dim:#a8a291; --ink-faint:#6d6857;
+  --gold:#d8ab5a; --gold-br:#f2d089; --gold-dp:#a87d38;
+  --aqua:#79c3d8; --aqua-dp:#3d8598; --shadow:rgba(0,0,0,0.55);
+  --card-grad:linear-gradient(155deg,#1c2036 0%,#14172550 100%);
+  --serif:"Hoefler Text","Iowan Old Style","Palatino Linotype",Palatino,"Times New Roman",Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Monaco,"Cascadia Code",monospace;
+  --maxw:1180px;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --ground:#ece4d2; --ground-2:#e3d9c2; --panel:#faf6ea; --panel-2:#f3ecda; --raised:#fbf8ef;
+    --line:rgba(138,104,40,0.22); --line-2:rgba(138,104,40,0.40);
+    --ink:#2b2515; --ink-dim:#6a6047; --ink-faint:#9a917a;
+    --gold:#9a6a1c; --gold-br:#b98a2c; --gold-dp:#7c5312;
+    --aqua:#2c7688; --aqua-dp:#1d5866; --shadow:rgba(120,96,40,0.22);
+    --card-grad:linear-gradient(155deg,#fbf8ef 0%,#f1e9d6 100%);
+  }
+}
+:root[data-theme="dark"]{--ground:#0b0d16;--ground-2:#0f1120;--panel:#171a2a;--panel-2:#1e2236;--raised:#232842;--line:rgba(216,171,90,0.16);--line-2:rgba(216,171,90,0.30);--ink:#ece7d6;--ink-dim:#a8a291;--ink-faint:#6d6857;--gold:#d8ab5a;--gold-br:#f2d089;--gold-dp:#a87d38;--aqua:#79c3d8;--aqua-dp:#3d8598;--shadow:rgba(0,0,0,0.55);--card-grad:linear-gradient(155deg,#1c2036 0%,#14172550 100%);}
+:root[data-theme="light"]{--ground:#ece4d2;--ground-2:#e3d9c2;--panel:#faf6ea;--panel-2:#f3ecda;--raised:#fbf8ef;--line:rgba(138,104,40,0.22);--line-2:rgba(138,104,40,0.40);--ink:#2b2515;--ink-dim:#6a6047;--ink-faint:#9a917a;--gold:#9a6a1c;--gold-br:#b98a2c;--gold-dp:#7c5312;--aqua:#2c7688;--aqua-dp:#1d5866;--shadow:rgba(120,96,40,0.22);--card-grad:linear-gradient(155deg,#fbf8ef 0%,#f1e9d6 100%);}
