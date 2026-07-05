@@ -4,6 +4,9 @@
   "private": true,
   "description": "Paloci — a candlelit viewer for your MemPalace. Walk your memories by the method of loci. Reads live from ChromaDB (read-only), with zero dependencies.",
   "keywords": ["mempalace", "memory-palace", "method-of-loci", "loci", "chromadb", "memory", "viewer", "self-hosted"],
+  "license": "MIT",
+  "author": "Ari Rostkier",
+  "repository": { "type": "git", "url": "https://github.com/roska87/paloci.git" },
   "type": "commonjs",
   "bin": { "paloci": "server.js" },
   "scripts": {

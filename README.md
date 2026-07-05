@@ -6,6 +6,10 @@
 
 Unlike a static snapshot, it **reads live** from the MemPalace database: every reload reflects the current state.
 
+![Paloci — the atrium: wings as candlelit doors](docs/atrium.jpg)
+
+> *(Screenshots use a small demo palace with made-up wings and memories.)*
+
 ## The name
 
 **Paloci** = **Pala**ce + **Loci**.
@@ -110,6 +114,10 @@ Example: `PORT=9000 MEMPALACE_DB=/other/path/chroma.sqlite3 npm start`
 ## Brain view (3D graph)
 
 An **Atrium ⇄ Brain** toggle in the top bar opens a navigable 3D view (drag to orbit, scroll to zoom) where the palace looks like a **neural network**: each wing is a lobe, each room a cluster, each memory a neuron; the **tunnels** are the threads that cross from one lobe to another. Click a neuron → it opens that memory in the reader.
+
+| Full — every memory as a glowing neuron | Detail — lobes & rooms as a constellation |
+|:---:|:---:|
+| ![Paloci Brain, Full mode](docs/brain-full.jpg) | ![Paloci Brain, Detail mode](docs/brain-detail.jpg) |
 
 It has two densities (a **Detail / Full** switch):
 
