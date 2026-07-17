@@ -78,7 +78,7 @@ function doSearch(q, mode) {
   if (mode === "semantic") showSearchLoading(q);
   api("/api/search?mode=" + mode + "&q=" + encodeURIComponent(q)).then((resp) => {
     if (q !== lastQ) return;
-    if (resp && resp.error) renderError(q, resp.error);
+    if (resp && resp.error) renderError(q, t(resp.error));
     else renderResults(q, (resp && resp.results) || [], mode);
   }).catch(() => { if (q === lastQ) renderError(q, t("searchFailed")); });
 }

@@ -321,6 +321,12 @@ export function brainSearch(q, mode) {
   api(url).then((res) => {
     const lantern = document.getElementById("lantern");
     if ((lantern.value || "").trim() !== q) return; // stale query
+    // Without this, an unavailable CLI reads as an honest "0 lit up".
+    if (mode === "semantic" && res.error) {
+      const el = document.getElementById("brainMatch");
+      el.hidden = false; el.textContent = t("semUnavailableShort");
+      return;
+    }
     const ids = mode === "semantic"
       ? (res.results || []).map((r) => r.id).filter((x) => x != null)
       : res;

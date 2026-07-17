@@ -84,8 +84,14 @@ There is nothing to configure: Paloci **auto-discovers your palace** the same
 way the MemPalace CLI does — it reads `palace_path` from
 `~/.mempalace/config.json`, and falls back to the default
 `~/.mempalace/palace/chroma.sqlite3`. It opens that database **read-only**, so
-it can never modify your MemPalace. Semantic search reuses your `mempalace`
-CLI, also found automatically.
+it can never modify your MemPalace.
+
+**Meaning search is optional.** It shells out to your `mempalace` CLI (found
+automatically, since that's what computes the embeddings), so it lights up on
+its own if you already have MemPalace installed — which you probably do, or you
+wouldn't have a palace to walk. If the CLI isn't there, Paloci says so and
+**Word** search keeps working; install it with `pipx install mempalace`, or set
+`MEMPALACE_BIN` if it lives somewhere unusual.
 
 ## Configuration (optional)
 
