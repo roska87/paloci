@@ -93,6 +93,40 @@ wouldn't have a palace to walk. If the CLI isn't there, Paloci says so and
 **Word** search keeps working; install it with `pipx install mempalace`, or set
 `MEMPALACE_BIN` if it lives somewhere unusual.
 
+## Docker
+
+Prefer a container? There's a `Dockerfile` and a `docker-compose.yml`. Your
+palace is mounted **read-only** at `/home/node/.mempalace`, and the image points
+`MEMPALACE_DB` straight at it — auto-discovery is bypassed on purpose, since
+`config.json` holds an absolute *host* path that means nothing in a container.
+
+```bash
+docker compose up --build
+```
+
+Then open **http://localhost:8787**. To stop it: `Ctrl+C` (or `docker compose down`).
+
+Without Compose:
+
+```bash
+docker build -t paloci .
+docker run --rm -p 8787:8787 \
+  -v "$HOME/.mempalace:/home/node/.mempalace:ro" \
+  paloci
+```
+
+Notes:
+
+- Change the port with `PORT=9000 docker compose up` (Compose maps `${PORT}:8787`).
+- If your palace lives elsewhere, point the mount at it, e.g. Compose:
+  `MEMPALACE_HOME=/data/mempalace docker compose up`.
+- **Meaning search doesn't work in the container.** It needs the `mempalace`
+  CLI, and the CLI is where the embedding model lives — Python, ONNX Runtime and
+  `all-MiniLM-L6-v2` add up to roughly a gigabyte, several times the size of the
+  whole image. So the container says the CLI is missing and Word search carries
+  on. Everything else — the Brain view, the whole palace — is unchanged. Run
+  natively if meaning search matters to you.
+
 ## Configuration (optional)
 
 Only needed if something lives in a non-standard place:

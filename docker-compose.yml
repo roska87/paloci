@@ -1,0 +1,12 @@
+services:
+  paloci:
+    build: .
+    image: paloci
+    container_name: paloci
+    ports:
+      - "${PORT:-8787}:8787"
+    volumes:
+      # Your MemPalace, mounted READ-ONLY. The image's MEMPALACE_DB points here,
+      # so the mount path is what makes the palace visible to the container.
+      - "${MEMPALACE_HOME:-${HOME}/.mempalace}:/home/node/.mempalace:ro"
+    restart: unless-stopped
